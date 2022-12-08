@@ -1,8 +1,6 @@
-#load "Utils.fsx"
-open Utils
+module AdventOfCode.Year2022.Day03
 
-let testInputLines = readInputLines "TestDay03.txt"
-let inputLines = readInputLines "InputDay03.txt"
+open AdventOfCode.Common
 
 (* === PART 1 === *)
 
@@ -33,8 +31,6 @@ let resultPart1 inputLines =
     |> List.map charToIntIndex
     |> List.sum
 
-resultPart1 inputLines
-
 (* === PART 2 === *)
 
 type RucksackItems = Set<char>
@@ -60,9 +56,7 @@ let resultPart2 inputLines =
     |> List.map (findGroupIntersect >> charToIntIndex)
     |> List.sum
 
-resultPart2 testInputLines
 
 (* === Print results === *)
 
-printResult 1 <| resultPart1 inputLines
-printResult 2 <| resultPart2 inputLines
+let solver = { parse = readAllLines; part1 = resultPart1; part2 = resultPart2 }

@@ -1,9 +1,6 @@
-#load "Utils.fsx"
-open Utils
+module AdventOfCode.Year2022.Day06
 
-let test1 = "mjqjpqmgbljsphdztnvjfqwrcgsmlb"
-let test2 = "bvwbjplbgvbhsrlpgdmjqwftvncz"
-let puzzleInputLines = readInputLines "InputDay06.txt"
+open AdventOfCode.Common
 
 (* === PART 1 === *)
 
@@ -24,7 +21,6 @@ let resultPart1 (inputLines: string list) =
     | [ s ] -> getStartOfPacketMarker s
     | _ -> failwith "Wrong input"
 
-resultPart1 puzzleInputLines
 
 (* === PART 2 === *)
 
@@ -39,16 +35,9 @@ let getStartOfPacketMarker2 (inputLine: string) =
 
     f 1 <| Seq.toList inputLine
 
-getStartOfPacketMarker2 test2
-
 let resultPart2 inputLines =
     match inputLines with
     | [ s ] -> getStartOfPacketMarker2 s
     | _ -> failwith "Wrong input"
 
-resultPart2 puzzleInputLines
-
-(* === Print results === *)
-
-printResult 1 <| resultPart1 puzzleInputLines
-printResult 2 <| resultPart2 puzzleInputLines
+let solver = { parse = readAllLines; part1 = resultPart1; part2 = resultPart2 }

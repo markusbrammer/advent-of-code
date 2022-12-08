@@ -1,8 +1,7 @@
-#load "Utils.fsx"
-open Utils
+module AdventOfCode.Year2022.Day02
 
-let testInput = readInputLines "TestDay02.txt"
-let input = readInputLines "InputDay02.txt"
+open AdventOfCode
+open Common
 
 type Shape =
     | Rock
@@ -45,10 +44,6 @@ let sumOfGame (_, shape2 as game) =
 
 let getResultPart1 inputLines =
     List.sumBy sumOfGame <| collectPairs inputLines
-    
-getResultPart1 testInput
-
-printResult 1 (getResultPart1 input)
 
 (* === PART 2 === *)
 
@@ -99,7 +94,5 @@ let sumOfGamePart2 (_, outcome as game) =
 let getResultPart2 inputList =
     collectPairs inputList
     |> List.sumBy sumOfGamePart2
-    
-getResultPart2 testInput
 
-printResult 2 (getResultPart2 input)
+let solver = { parse = readAllLines; part1 = getResultPart1; part2 = getResultPart2}

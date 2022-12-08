@@ -1,10 +1,6 @@
-#load "Utils.fsx"
-open Utils
+module AdventOfCode.Year2022.Day01
 
-let testInput = readInputLines "TestDay01.txt"
-let input = readInputLines "InputDay01.txt"
-
-(* === PART 1 === *)
+open AdventOfCode.Common
 
 let sumOfInventories (calorieList: string list) =
     // Add the sum of calories of each inventory to a list of sums. 
@@ -18,12 +14,14 @@ let sumOfInventories (calorieList: string list) =
     // Remember the last inventory. 
     |> fun (sums, lastInventorySum) -> lastInventorySum :: sums
 
-printResult 1 (List.max <| sumOfInventories input)
+let solvePart1 ls = List.max <| sumOfInventories ls
 
 (* === PART 2 === *)
 
-sumOfInventories input
-|> List.sortDescending
-|> List.take 3
-|> List.sum
-|> printResult 2
+let solvePart2 input = 
+    sumOfInventories input
+    |> List.sortDescending
+    |> List.take 3
+    |> List.sum
+
+let solver = { parse = readAllLines; part1 = solvePart1; part2 = solvePart2 }

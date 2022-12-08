@@ -1,8 +1,6 @@
-#load "Utils.fsx"
-open Utils
+module AdventOfCode.Year2022.Day04
 
-let testInputLines = readInputLines "TestDay04.txt"
-let puzzleInputLines = readInputLines "InputDay04.txt"
+open AdventOfCode.Common
 
 (* === PART 1 === *)
 
@@ -33,8 +31,6 @@ let getResultPart1 inputLines =
     |> List.filter eitherFullyContains
     |> List.length
 
-getResultPart1 testInputLines
-let resultPart1 = getResultPart1 puzzleInputLines
 
 (* === PART 2 === *)
 
@@ -54,10 +50,4 @@ let rangeOverlaps ((s1, s2): CleaningPair2) =
 let getResultPart2 inputLines =
     getCleaningPairs2 inputLines |> List.filter rangeOverlaps |> List.length
 
-getResultPart2 testInputLines
-let resultPart2 = getResultPart2 puzzleInputLines
-
-(* === Print results === *)
-
-printResult 1 <| resultPart1
-printResult 2 <| resultPart2
+let solver = { parse = readAllLines; part1 = getResultPart1; part2 = getResultPart2 }

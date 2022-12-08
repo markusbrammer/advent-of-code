@@ -1,11 +1,7 @@
-#load "Utils.fsx"
+module AdventOfCode.Year2022.Day05
 
-open Utils
-
+open AdventOfCode.Common
 open System.Text.RegularExpressions
-
-let testInputLines = readInputLines "TestDay05.txt"
-let puzzleInputLines = readInputLines "InputDay05.txt"
 
 (* === PART 1 === *)
 
@@ -27,8 +23,6 @@ let assignInitialCrates (inputLines: string list) =
     
     assignColumns Map.empty (List.filter rx.IsMatch inputLines)
         
-assignInitialCrates puzzleInputLines
-
 let getCommands (inputLines: string list) =
     let rx = Regex @"move ([0-9]+) from ([0-9]) to ([0-9])"
 
@@ -36,8 +30,6 @@ let getCommands (inputLines: string list) =
     |> List.map (fun s ->
         let groups = rx.Match(s).Groups
         (int groups.[1].Value, int groups.[2].Value, int groups.[3].Value))
-
-getCommands puzzleInputLines
 
 let rec move (quantity, stack1, stack2) map =
     match quantity with
@@ -66,8 +58,6 @@ let resultPart1 inputLines =
             | _ -> crates)
         ""
 
-resultPart1 puzzleInputLines
-
 (* === PART 2 === *)
 
 let move2 (q, s1, s2) map =
@@ -91,9 +81,4 @@ let resultPart2 inputLines =
             | c :: _ -> crates + string c
             | _ -> crates)
         ""
-resultPart2 puzzleInputLines
-
-(* === Print results === *)
-
-printResult 1 <| resultPart1 puzzleInputLines
-printResult 2 <| resultPart2 puzzleInputLines
+let solver = { parse = readAllLines; part1 = resultPart1; part2 = resultPart2 }

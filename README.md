@@ -2,21 +2,30 @@
 
 Attempting [Advent of Code 2022](https://adventofcode.com/2022) using F#. 
 
+Structure inspired by: [CameronAavik/AdventOfCode](https://github.com/CameronAavik/AdventOfCode). 
+
 ## How to run
 
-### Command line
+From root folder (this folder): 
 
-1. Run `dotnet fsi path/to/DayXX.fsx`
+```bash
+dotnet run --project Year2022/Year2022.fsproj -- <args>
+```
 
-### Text editor/IDE
+(**Note `--` before `<args>`**). Or inside a `Year` folder: 
 
-JetBrains Rider (v2022.2.4) or VSCode with the [Ionide for F#](https://marketplace.visualstudio.com/items?itemName=Ionide.Ionide-fsharp) extension (Ionide v7.4.0). 
+```bash
+dotnet run -- <args>
+```
 
-1. Open this folder (or the `AOC2022` folder) in the program.
-2. Open any `DayXX.fsx` file.
-3. Highlight all the text.
-4. Send to F# Interactive 
-   - Rider: `Tools -> F# Interactive -> Send to F# Interactive` (`cmd+\` on mac).
-   - VSCode with Ionide: `alt+enter` OR run the command `F#: Run script`. 
+### Arguments/flags 
 
-VSCode with older versions of Ionide plugin: Open the folder `AOC2022` (*not* this root folder). 
+- `-a`: Get all solutions. 
+- `-e <day> <part>`: Run on example input, day <day> part <part>. 
+- `<day>`: Get both results from a day. 
+- `<day> <part>`: Get result from day <day> part <part>.
+
+Examples 
+
+- All solutions from 2022: `dotnet run --project Year2022/Year2022.fsproj -- -a`
+- Has already cd'ed into a `Year` directory, wants to test implementation of day 3, part 2 on example input: `dotnet run -- -e 3 2`. 
