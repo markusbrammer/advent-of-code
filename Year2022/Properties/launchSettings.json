@@ -4,6 +4,10 @@
     "Year2022": {
       "commandName": "Project",
       "commandLineArgs": "-a"
+    },
+    "Testing solutions": {
+      "commandName": "Project",
+      "commandLineArgs": "9 2"
     }
   }
 }

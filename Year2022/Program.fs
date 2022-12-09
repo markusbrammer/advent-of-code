@@ -7,7 +7,7 @@ open Common
 module Program =
     
     let YEAR = 2022
-    let DAYS_SOLVED = 8
+    let DAYS_SOLVED = 9
     
     let getSolver runExample day part =
         let run (solver: Day<_, _, _>) =
@@ -21,7 +21,8 @@ module Program =
         | 5 -> run Day05.solver
         | 6 -> run Day06.solver
         | 7 -> run Day07.solver
-        | 8 -> run Day08.solver 
+        | 8 -> run Day08.solver
+        | 9 -> run Day09.solver
         | day -> printfn $"Invalid Day: %i{day} (Year {YEAR})"
 
     let tryInt (s: string) =
