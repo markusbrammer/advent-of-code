@@ -1,4 +1,4 @@
-module AdventOfCode.Year2022.Day01
+module AdventOfCode.Year2022.Solutions.Day01
 
 open AdventOfCode.Common
 

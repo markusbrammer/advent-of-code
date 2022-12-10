@@ -14,15 +14,16 @@ module Program =
             Runner.run __SOURCE_DIRECTORY__ runExample YEAR day part solver
 
         match day with
-        | 1 -> run Day01.solver
-        | 2 -> run Day02.solver
-        | 3 -> run Day03.solver
-        | 4 -> run Day04.solver
-        | 5 -> run Day05.solver
-        | 6 -> run Day06.solver
-        | 7 -> run Day07.solver
-        | 8 -> run Day08.solver
-        | 9 -> run Day09.solver
+        | 1 -> run Solutions.Day01.solver
+        | 2 -> run Solutions.Day02.solver
+        | 3 -> run Solutions.Day03.solver
+        | 4 -> run Solutions.Day04.solver
+        | 5 -> run Solutions.Day05.solver
+        | 6 -> run Solutions.Day06.solver
+        | 7 -> run Solutions.Day07.solver
+        | 8 -> run Solutions.Day08.solver
+        | 9 -> run Solutions.Day09.solver
+        | 10 -> run Solutions.Day10.solver
         | day -> printfn $"Invalid Day: %i{day} (Year {YEAR})"
 
     let tryInt (s: string) =
@@ -41,6 +42,7 @@ module Program =
                 runPart runExample day part 
 
         match argv with
+        | [|  |]
         | [| "-a" |] ->
             for day in 1..DAYS_SOLVED do
                 runDay false day

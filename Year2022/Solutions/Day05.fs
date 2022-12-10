@@ -1,4 +1,4 @@
-module AdventOfCode.Year2022.Day05
+module AdventOfCode.Year2022.Solutions.Day05
 
 open AdventOfCode.Common
 open System.Text.RegularExpressions
