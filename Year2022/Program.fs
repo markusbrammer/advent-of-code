@@ -24,6 +24,7 @@ module Program =
         | 8 -> run Solutions.Day08.solver
         | 9 -> run Solutions.Day09.solver
         | 10 -> run Solutions.Day10.solver
+        | 11 -> run Solutions.Day11.solver
         | day -> printfn $"Invalid Day: %i{day} (Year {YEAR})"
 
     let tryInt (s: string) =
