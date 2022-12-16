@@ -59,7 +59,7 @@ let addItem item (m: Monkey) =
 
 let rec monkeyInspect f monkeyNumber (ms: Monkey list) =
     let m = List.item monkeyNumber ms
-    
+
     match m.items with
     | [] -> ms
     | i :: is ->
@@ -70,15 +70,19 @@ let rec monkeyInspect f monkeyNumber (ms: Monkey list) =
               targetTrue = m.targetTrue
               targetFalse = m.targetFalse
               inspections = m.inspections + 1UL }
-        
+
         let i' = m.operation i |> f
-        let target = if i' % m.divisibleBy = 0UL then m.targetTrue else m.targetFalse
+
+        let target =
+            if i' % m.divisibleBy = 0UL then
+                m.targetTrue
+            else
+                m.targetFalse
+
         let mTarget = List.item target ms |> addItem i'
-        
-        let ms' =
-            List.updateAt monkeyNumber m' ms
-            |> List.updateAt target mTarget
-        
+
+        let ms' = List.updateAt monkeyNumber m' ms |> List.updateAt target mTarget
+
         monkeyInspect f monkeyNumber ms'
 
 let rec runRound f index (ms: Monkey list) =
@@ -90,7 +94,7 @@ let rec runRound f index (ms: Monkey list) =
 let rec runRounds f numberOfRounds (ms: Monkey list) =
     match numberOfRounds with
     | 0 -> ms
-    | n -> runRounds f (n - 1) <| runRound f 0 ms 
+    | n -> runRounds f (n - 1) <| runRound f 0 ms
 
 let solvePart1 (input: Monkey list) =
     runRounds (fun x -> x / 3UL) 20 input
@@ -101,7 +105,7 @@ let solvePart1 (input: Monkey list) =
 
 let solvePart2 (input) =
     let lcm = List.fold (*) 1UL <| List.map (fun (m: Monkey) -> m.divisibleBy) input
-    
+
     runRounds (fun x -> x % lcm) 10000 input
     |> List.map (fun m -> m.inspections)
     |> List.sortDescending

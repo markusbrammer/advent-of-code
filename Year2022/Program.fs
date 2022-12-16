@@ -7,7 +7,7 @@ open Common
 module Program =
     
     let YEAR = 2022
-    let DAYS_SOLVED = 10
+    let DAYS_SOLVED = 11
     
     let getSolver runExample day part =
         let run (solver: Day<_, _, _>) =
