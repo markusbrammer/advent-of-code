@@ -3,6 +3,7 @@ package org.markusbrammer.adventofcode.year2022;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.markusbrammer.adventofcode.common.Day;
+import org.markusbrammer.adventofcode.common.Part;
 
 import java.io.FileNotFoundException;
 
@@ -14,16 +15,17 @@ class Day01Test {
 
     @BeforeEach
     void setUp() throws FileNotFoundException {
-        this.day = new Day01(true);
+        this.day = new Day01();
+        this.day.solveUsingExampleInput();
     }
 
     @Test
     void examplePart1() {
-        assertEquals(day.solvePart1(), "24000");
+        assertEquals(day.solvePart(Part.ONE), "24000");
     }
 
     @Test
     void examplePart2() {
-        assertEquals(day.solvePart2(), "45000");
+        assertEquals(day.solvePart(Part.TWO), "45000");
     }
 }
