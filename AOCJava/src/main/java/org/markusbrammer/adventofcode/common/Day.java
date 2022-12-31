@@ -22,8 +22,8 @@ public abstract class Day {
     }
 
     protected abstract void parse() throws FileNotFoundException;
-    protected abstract String solvePartOne();
-    protected abstract String solvePartTwo();
+    protected abstract Object solvePartOne();
+    protected abstract Object solvePartTwo();
 
     public String solvePart(Part part) {
         if (!this.hasParsedInput) {
@@ -35,8 +35,8 @@ public abstract class Day {
         }
 
         return switch (part) {
-            case ONE -> this.solvePartOne();
-            case TWO -> this.solvePartTwo();
+            case ONE -> this.solvePartOne().toString();
+            case TWO -> this.solvePartTwo().toString();
         };
     }
 

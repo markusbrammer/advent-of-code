@@ -35,22 +35,19 @@ public class Day01 extends Day {
     }
 
     @Override
-    protected String solvePartOne() {
+    protected Object solvePartOne() {
         return inventorySums.stream()
                 .max(Comparator.naturalOrder())
                 .map(Object::toString)
                 .orElse("No solution"); // https://stackoverflow.com/a/32277566.
-
     }
 
     @Override
-    protected String solvePartTwo() {
+    protected Object solvePartTwo() {
         return inventorySums.stream()
                 .sorted(Comparator.reverseOrder())
                 .limit(3)
-                .reduce(0, Integer::sum)
-                .toString();
+                .reduce(0, Integer::sum);
     }
-
 
 }
