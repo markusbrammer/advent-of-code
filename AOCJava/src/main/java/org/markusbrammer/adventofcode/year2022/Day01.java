@@ -1,30 +1,32 @@
 package org.markusbrammer.adventofcode.year2022;
 
 import org.markusbrammer.adventofcode.common.Day;
+import org.markusbrammer.adventofcode.common.Solution;
 
-import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class Day01 extends Day {
 
-    private List<Integer> inventorySums;
-
-    public Day01() throws FileNotFoundException {
+    public Day01() {
         super(2022, 1);
     }
 
     @Override
-    protected void parse() throws FileNotFoundException {
-        String resourceAsString = this.getResourceAsString();
+    protected Solution solve(String input) {
+        List<Integer> inventorySums = this.parse(input);
+        int resultPart1 = solvePartOne(inventorySums);
+        int resultPart2 = solvePartTwo(inventorySums);
+        return new Solution(resultPart1, resultPart2);
+    }
 
-        String[] separatedInventories = resourceAsString.split("\n\n");
-        this.inventorySums = Arrays.stream(separatedInventories)
+    private List<Integer> parse(String input) {
+        String[] separatedInventories = input.split("\n\n");
+        return Arrays.stream(separatedInventories)
                 .map(this::getInventorySum)
                 .toList();
-
-        this.hasParsedInput = true;
     }
 
     private int getInventorySum(String inventory) {
@@ -34,20 +36,14 @@ public class Day01 extends Day {
                 .reduce(0, Integer::sum);
     }
 
-    @Override
-    protected Object solvePartOne() {
-        return inventorySums.stream()
-                .max(Comparator.naturalOrder())
-                .map(Object::toString)
-                .orElse("No solution"); // https://stackoverflow.com/a/32277566.
+    private int solvePartOne(List<Integer> inventorySums) {
+        return Collections.max(inventorySums);
     }
 
-    @Override
-    protected Object solvePartTwo() {
+    protected int solvePartTwo(List<Integer> inventorySums) {
         return inventorySums.stream()
                 .sorted(Comparator.reverseOrder())
                 .limit(3)
                 .reduce(0, Integer::sum);
     }
-
 }

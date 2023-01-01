@@ -14,18 +14,18 @@ class Day01Test {
     private Day day;
 
     @BeforeEach
-    void setUp() throws FileNotFoundException {
+    void setUp() {
         this.day = new Day01();
         this.day.solveUsingExampleInput();
     }
 
     @Test
-    void examplePart1() {
-        assertEquals(day.solvePart(Part.ONE), "24000");
+    void examplePart1() throws FileNotFoundException {
+        assertEquals(day.getSolution().getResult(Part.ONE), 24000);
     }
 
     @Test
-    void examplePart2() {
-        assertEquals(day.solvePart(Part.TWO), "45000");
+    void examplePart2() throws FileNotFoundException {
+        assertEquals(day.getSolution().getResult(Part.TWO), 45000);
     }
 }

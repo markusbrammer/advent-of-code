@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DayTest {
 
-    private Day dayExisting;
-    private Day dayNotExisting;
+    private Day validDay;
+    private Day invalidDay;
 
     private final int YEAR = 2022;
     private final int VALID_DAY = 8;
@@ -19,36 +19,16 @@ class DayTest {
 
     @BeforeEach
     void setUp() {
-        this.dayExisting = new Day(YEAR, VALID_DAY) {
+        this.validDay = new Day(YEAR, VALID_DAY) {
             @Override
-            protected void parse() {
-
-            }
-
-            @Override
-            protected String solvePartOne() {
-                return null;
-            }
-
-            @Override
-            protected String solvePartTwo() {
+            protected Solution solve(String input) {
                 return null;
             }
         };
 
-        this.dayNotExisting = new Day(YEAR, INVALID_DAY) {
+        this.invalidDay = new Day(YEAR, INVALID_DAY) {
             @Override
-            protected void parse() {
-
-            }
-
-            @Override
-            protected String solvePartOne() {
-                return null;
-            }
-
-            @Override
-            protected String solvePartTwo() {
+            protected Solution solve(String input) {
                 return null;
             }
         };
@@ -56,13 +36,13 @@ class DayTest {
 
     @Test
     void readInputFindsInput() throws FileNotFoundException {
-        File file = dayExisting.getResource();
+        File file = validDay.getInputFile();
         String path = file.getAbsolutePath();
         assertTrue(path.endsWith("2022/day08.txt"));
     }
 
     @Test
     void readInputCannotFindAFileWhichDoesNotExist() {
-        assertThrows(FileNotFoundException.class, () -> dayNotExisting.getResource());
+        assertThrows(FileNotFoundException.class, () -> invalidDay.getInputFile());
     }
 }
