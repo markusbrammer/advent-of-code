@@ -11,7 +11,9 @@ type Shape =
     | Paper
     | Scissors
 
-let input = getInput "2022" "02"
+let puzzle = ("2022", "02")
+
+let input = getInput puzzle
 
 (* === PART 1 === *)
 
@@ -106,3 +108,7 @@ let solution = {
     part1 = fun () -> getResultPart1 (readAllLines input) |> string
     part2 = fun () -> getResultPart2 (readAllLines input) |> string
 }
+
+#if INTERACTIVE 
+printSol puzzle solution 
+#endif

@@ -7,7 +7,7 @@ let getModule (project: string) (moduleName: string) : Type =
     |> Seq.find (fun t -> t.FullName = moduleName)
 
 let loadSolutionModule (year: string) (day: string) =
-    getModule $"Year{year}" $"Year{year}.Day{day}"
+    getModule $"Year{year}" $"Year{year}.Day%02d{int day}"
 
 let tryGetSolution (year: string) (day: string) = 
     try
@@ -18,15 +18,15 @@ let tryGetSolution (year: string) (day: string) =
     with
         | :? Collections.Generic.KeyNotFoundException -> None
 
-let printSolutions (year: string) (day: string) =
+let printSolution (year: string) (day: string) =
     match tryGetSolution year day with 
-    | Some s -> printfn $"Part 1:\n{s.part1 ()}\n\nPart 2:\n{s.part2 ()}"
+    | Some s -> printSol (year, day) s
     | None -> printfn $"No solution for year {year}, day {day}"
 
 [<EntryPoint>]
 let main args =
     match args with
-    | [| year; day |] -> printSolutions year day
+    | [| year; day |] -> printSolution year day
     | _ -> printfn "Specify year and date."
 
     0

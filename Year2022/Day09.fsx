@@ -131,9 +131,15 @@ let solvePart2 (input) =
 //       part1 = solvePart1
 //       part2 = solvePart2 }
 
-let input = getInput "2022" "09"
+let puzzle = ("2022", "09")
+
+let input = getInput puzzle
 
 let solution = {
     part1 = unitToStrWrap (solvePart1 (parse input))
     part2 = unitToStrWrap (solvePart2 (parse input))
 }
+
+#if INTERACTIVE 
+printSol puzzle solution 
+#endif

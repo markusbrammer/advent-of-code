@@ -6,7 +6,9 @@ module Year2022.Day01
 
 open Common
 
-let input = getInput "2022" "01"
+let puzzle = ("2022", "01")
+
+let input = getInput puzzle
 
 let sumOfInventories (calorieList: string list) =
     // Add the sum of calories of each inventory to a list of sums. 
@@ -34,3 +36,7 @@ let solution = {
     part1 = fun () -> solvePart1 (readAllLines input) |> string
     part2 = fun () -> solvePart2 (readAllLines input) |> string
 }
+
+#if INTERACTIVE 
+printSol puzzle solution 
+#endif

@@ -65,9 +65,15 @@ let resultPart2 inputLines =
 
 // let solver = { parse = readAllLines; part1 = resultPart1; part2 = resultPart2 }
 
-let input = getInput "2022" "03"
+let puzzle = ("2022", "03")
+
+let input = getInput puzzle
 
 let solution = {
     part1 = unitToStrWrap (resultPart1 (readAllLines input))
     part2 = unitToStrWrap (resultPart2 (readAllLines input))
 }
+
+#if INTERACTIVE 
+printSol puzzle solution 
+#endif

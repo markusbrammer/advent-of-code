@@ -7,10 +7,12 @@ type Solution = {
     part2: unit -> string
 }
 
-let printSolution year day solution = 
+let printSol (year, day) solution = 
     printfn $"Solution to Day %s{day} Year %s{year}:"
-    printfn $"Part 1: %A{solution.part1}"
-    printfn $"Part 2: %A{solution.part2}"
+    printfn ""
+    printfn $"Part 1:\n{solution.part1 ()}"
+    printfn ""
+    printfn $"Part 2:\n{solution.part2 ()}"
 
 let readAllLines = File.ReadLines >> Seq.toList
 
@@ -20,10 +22,10 @@ let parseEachLineIndexed f = File.ReadLines >> Seq.mapi f
 
 let charToInt (c: char) = int c - int '0'
 
-let getExample year day = 
+let getExample (year, day) = 
     Path.Combine(__SOURCE_DIRECTORY__, "..", $"Year%s{year}", "example", $"day%s{day}.txt")
 
-let getInput year day = 
+let getInput (year, day) = 
     Path.Combine(__SOURCE_DIRECTORY__, "..", $"Year%s{year}", "input", $"day%s{day}.txt")
 
 let unitToStrWrap f = 
