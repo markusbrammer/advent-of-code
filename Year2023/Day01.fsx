@@ -31,44 +31,28 @@ let solPart1 input =
  ********************************** Part 2 **********************************
  ****************************************************************************)
 
+// Clever idea from https://www.reddit.com/user/DrunkHacker/
+// https://www.reddit.com/r/adventofcode/comments/1883ibu/comment/kbj2stu/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 let lettersToInt =
     Map.ofList
-        [ ("one", 1)
-          ("two", 2)
-          ("three", 3)
-          ("four", 4)
-          ("five", 5)
-          ("six", 6)
-          ("seven", 7)
-          ("eight", 8)
-          ("nine", 9) ]
+        [ ("zero", "z0o")
+          ("one", "o1e")
+          ("two", "t2o")
+          ("three", "t3e")
+          ("four", "f4r")
+          ("five", "f5e")
+          ("six", "s6x")
+          ("seven", "s7n")
+          ("eight", "e8t")
+          ("nine", "n9e") ]
 
-let findDigits (s: string) =
-    let pattern = @"\d|zero|one|two|three|four|five|six|seven|eight|nine"
-    let rgx = sprintf @"(%s).*(%s)" pattern pattern
-    let m = Regex.Match(s, rgx)
-
-    if m.Success then
-        (m.Groups.[1].Value, m.Groups.[2].Value)
-    else
-        let rgx' = sprintf @"(%s)" pattern
-        let m' = Regex.Match(s, rgx')
-        let value = m'.Groups.[1].Value
-
-        (value, value)
-
-let digitToNumber (digit: string) =
-    match digit.Length with
-    | 1 -> int digit
-    | _ -> Map.find digit lettersToInt
-
-let getCalibrationVal2 (s: string) =
-    let (first, last) = findDigits s
-
-    10 * (digitToNumber first) + digitToNumber last
+let replaceSpelled (s: string) =
+    Seq.fold (fun (snew: string) key -> snew.Replace(key, Map.find key lettersToInt)) s (Map.keys lettersToInt)
 
 let solPart2 input =
-    Seq.sumBy getCalibrationVal2 (readLines input)
+    (readLines input)
+    |> Seq.map replaceSpelled
+    |> Seq.sumBy getCalibrationVal
 
 (****************************************************************************
  ********************************* Solution *********************************
