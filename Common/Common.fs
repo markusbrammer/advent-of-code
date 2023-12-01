@@ -2,19 +2,21 @@
 
 open System.IO
 
-type Solution = {
-    part1: unit -> string
-    part2: unit -> string
+type Solution<'a, 'b> = {
+    part1: unit -> 'a
+    part2: unit -> 'b
 }
 
 let printSol (year, day) solution = 
     printfn $"Solution to Day %s{day} Year %s{year}:"
     printfn ""
-    printfn $"Part 1:\n{solution.part1 ()}"
+    printfn $"Part 1:\n%A{solution.part1 ()}"
     printfn ""
-    printfn $"Part 2:\n{solution.part2 ()}"
+    printfn $"Part 2:\n%A{solution.part2 ()}"
 
 let readAllLines = File.ReadLines >> Seq.toList
+
+let readLines = File.ReadLines >> seq
 
 let parseEachLine f = File.ReadLines >> Seq.map f
 

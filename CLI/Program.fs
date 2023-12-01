@@ -13,7 +13,7 @@ let tryGetSolution (year: string) (day: string) =
     try
         (loadSolutionModule year day).GetProperties()
         |> Seq.find (fun p -> p.Name = "solution")
-        |> fun p -> p.GetValue(null) :?> Solution 
+        |> fun p -> p.GetValue(null) :?> Solution<_, _> 
         |> Some
     with
         | :? Collections.Generic.KeyNotFoundException -> None
