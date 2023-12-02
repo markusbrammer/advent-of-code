@@ -5,7 +5,6 @@ module Year2022.Day00
 #endif
 
 open Common
-open System.Text.RegularExpressions
 
 let puzzle = ("2023", "00")
 let example = getExample puzzle
