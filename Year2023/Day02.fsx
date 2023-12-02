@@ -1,6 +1,5 @@
 #if INTERACTIVE
 #r "bin/debug/net7.0/Common.dll"
-#r "nuget: FParsec, 1.1.1"
 #else
 module Year2022.Day02
 #endif
