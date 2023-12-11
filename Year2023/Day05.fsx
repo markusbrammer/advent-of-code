@@ -1,7 +1,7 @@
 #if INTERACTIVE
 #r "bin/debug/net7.0/Common.dll"
 #else
-module Year2022.Day05
+module Year2023.Day05
 #endif
 
 open Common
