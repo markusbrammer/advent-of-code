@@ -125,6 +125,7 @@ let rec gcd a b =
     | 0UL -> a 
     | _ -> gcd b (a % b)
 
+/// https://stackoverflow.com/a/42472824
 let lcmList ls = 
     let rec lcm (res: uint64) = function 
         | [] -> res 
